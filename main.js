@@ -5,15 +5,15 @@ const resetBtn = document.querySelector('#resetBtn')
 
 // variables to hold time values
 
+let centiSeconds = 0
 let seconds = 0
 let minutes = 0
-let hours = 0
 
 // variables for leading zero
 
+let leadingCentiSeconds = 0
 let leadingSeconds = 0
 let leadingMinutes = 0
-let leadingHours = 0
 
 // variables for set interval and timer status
 
@@ -23,18 +23,22 @@ let timerStatus = 'stopped'
 // stopwatch function
 
 function stopWatch() {
-  seconds++
+  centiSeconds++
+  if (centiSeconds > 99) {
+    centiSeconds = 0
+    seconds++
 
-  if (seconds > 59) {
-    seconds = 0
-    minutes++
-
-    if (minutes > 59) {
-      minutes = 0
-      hours++
+    if (seconds > 59) {
+      seconds = 0
+      minutes++
     }
   }
 
+  if (centiSeconds < 10) {
+    leadingCentiSeconds = '0' + centiSeconds.toString()
+  } else {
+    leadingCentiSeconds = centiSeconds
+  }
   if (seconds < 10) {
     leadingSeconds = '0' + seconds.toString()
   } else {
@@ -45,22 +49,16 @@ function stopWatch() {
   } else {
     leadingMinutes = minutes
   }
-  if (hours < 10) {
-    leadingHours = '0' + hours.toString()
-  } else {
-    leadingHours = hours
-  }
 
   let displayTimer = document.querySelector('.timer')
-  displayTimer.innerText = `${leadingHours}:${leadingMinutes}:${leadingSeconds}`
+  displayTimer.innerText = `${leadingMinutes}:${leadingSeconds}:${leadingCentiSeconds}`
 }
 
 startStopBtn.addEventListener('click', () => {
   if (timerStatus === 'stopped') {
-    timerIntervalId = window.setInterval(stopWatch, 1000)
+    timerIntervalId = window.setInterval(stopWatch, 10)
     startStopBtn.innerHTML = `<i class="fa-solid fa-pause"></i>`
     startStopBtn.classList.add('pause-btn')
-
     timerStatus = 'started'
   } else {
     window.clearInterval(timerIntervalId)
@@ -72,9 +70,9 @@ startStopBtn.addEventListener('click', () => {
 })
 
 resetBtn.addEventListener('click', () => {
-  // window.clearInterval(timerIntervalId)
+  window.clearInterval(timerIntervalId)
+  centiSeconds = 0
   seconds = 0
   minutes = 0
-  hours = 0
   document.querySelector('.timer').innerText = '00:00:00'
 })

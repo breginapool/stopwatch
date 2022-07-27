@@ -6,7 +6,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Fira Code', monospace;
   background: rgb(32, 168, 252) url('https://source.unsplash.com/random?pool') no-repeat center /
     cover;
 }
@@ -24,22 +24,51 @@ body {
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 0 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 2rem;
-  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 30px 40px;
 }
 
 .timer-container .timer {
   font-size: 5rem;
+  grid-column: 1 / -1;
+  grid-row: 2 /3;
+  justify-self: center;
+  align-self: center;
+}
+
+.timer-container div:nth-child(-n + 3) {
+  font-size: 2rem;
+  grid-row: 1 / 2;
+  align-self: center;
+}
+
+.timer-container .min {
+  grid-column: 1 / 2;
+  justify-self: start;
+}
+
+.timer-container .sec {
+  grid-column: 2 / 3;
+  justify-self: center;
+}
+.timer-container .msec {
+  grid-column: 3 / 4;
+  justify-self: end;
 }
 
 /* buttons */
 
+.timer-container .buttons {
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  align-self: center;
+  justify-self: center;
+}
+
 .timer-container .buttons .btn {
-  margin: 0 5px;
+  margin: 20px 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -84,6 +113,8 @@ body {
   background-color: rgba(244, 11, 7, 1);
 }
 
+/* media queries */
+
 @media screen and (max-width: 450px) {
   body {
     display: block;
@@ -92,15 +123,18 @@ body {
   }
 
   .timer-container {
-    padding: 30px 5px;
-    gap: 20px;
+    padding: 40px 30px;
+  }
+
+  .timer-container div:nth-child(-n + 3) {
+    display: none;
   }
 
   .timer-container .timer {
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
 
   .timer-container .buttons .btn {
-    margin: 0 10px;
+    margin-top: 10px;
   }
 }
