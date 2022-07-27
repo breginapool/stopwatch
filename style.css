@@ -77,40 +77,40 @@ body {
 
 .timer-container .buttons i {
   font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 1);
   padding: 15px;
   width: 100%;
 }
 
 .timer-container .buttons .btn:hover i {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* play button */
 .timer-container .buttons .play-btn {
-  background-color: rgba(14, 186, 14, 0.8);
+  background-color: rgba(14, 186, 14, 1);
 }
 
 .timer-container .buttons .play-btn:hover {
-  background-color: rgba(14, 186, 14, 1);
+  background-color: rgba(14, 186, 14, 0.8);
 }
 
 /* pause button */
 .timer-container .buttons .pause-btn {
-  background-color: rgba(255, 165, 0, 0.8);
+  background-color: rgba(255, 165, 0, 1);
 }
 
 .timer-container .buttons .pause-btn:hover {
-  background-color: rgba(255, 165, 0, 1);
+  background-color: rgba(255, 165, 0, 0.8);
 }
 
 /* reset button */
 .timer-container .buttons .reset-btn {
-  background-color: rgba(244, 11, 7, 0.8);
+  background-color: rgba(244, 11, 7, 1);
 }
 
 .timer-container .buttons .reset-btn:hover {
-  background-color: rgba(244, 11, 7, 1);
+  background-color: rgba(244, 11, 7, 0.8);
 }
 
 /* media queries */
